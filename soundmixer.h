@@ -15,6 +15,7 @@ public:
     Sound(Mix_Chunk *c);
     ~Sound();
     void play();
+
 private:
     std::unique_ptr<Mix_Chunk> chunk;
 };
