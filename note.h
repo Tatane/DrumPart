@@ -9,18 +9,22 @@ public:
     Note();
     void play();
 
-    DrumNotes drumNote = DrumNotes::Bass;
-    double startTimeFromBeginningOfMeasure = 0;
+    double      getStartTimeFromBeginningOfMeasure() const { return startTimeFromBeginningOfMeasure; }
+    void        setStartTimeFromBeginningOfMeasure(double d) { startTimeFromBeginningOfMeasure = d; }
+    DrumNotes   getDrumNote() const { return drumNote; }
+    void        setDrumNote(const DrumNotes &value) {drumNote = value; }
 
 private:
     static NotePlayer notePlayer;
+    DrumNotes drumNote = DrumNotes::Bass;
+    double startTimeFromBeginningOfMeasure = 0;
 };
 
 struct NoteCompare
 {
     bool operator()(const Note* lh, const Note* rh)
     {
-        return lh->startTimeFromBeginningOfMeasure < rh->startTimeFromBeginningOfMeasure;
+        return lh->getStartTimeFromBeginningOfMeasure() < rh->getStartTimeFromBeginningOfMeasure();
     }
 };
 

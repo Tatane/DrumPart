@@ -7,12 +7,16 @@ Measure::Measure()
 {
     // TEMP :
     Note * note1 = new Note;
-    note1->startTimeFromBeginningOfMeasure = 5;
+    note1->setStartTimeFromBeginningOfMeasure(2);
+    note1->setDrumNote(DrumNotes::Snare);
     notes.insert(note1);
 
     Note * note2 = new Note;
-    note2->startTimeFromBeginningOfMeasure = 2;
+    note2->setStartTimeFromBeginningOfMeasure(1);
     notes.insert(note2);
+    Note * note3 = new Note;
+    note3->setStartTimeFromBeginningOfMeasure(1.5);
+    notes.insert(note3);
 }
 
 void Measure::play()
@@ -25,7 +29,7 @@ void Measure::play()
         chrono::duration<double> elapsed = chrono::system_clock::now() - start;
 
         Note * note = *it;
-        if (elapsed.count() > note->startTimeFromBeginningOfMeasure )
+        if (elapsed.count() > note->getStartTimeFromBeginningOfMeasure() )
         {
             note->play();
             ++it; // next Note.
