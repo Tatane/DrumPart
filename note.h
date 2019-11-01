@@ -15,7 +15,7 @@ public:
     short   getPlacement() const {return placement;}
     void    setPlacement(short value);
 
-    double convertPlacementToTime(double measureDuration);
+    double convertPlacementToTime(double measureDuration) const;
 
 private:
     const short NB_MAX_SUBDIVISION_PER_MEASURE = 16; // for now, 16th notes are the smallest possible.
@@ -27,7 +27,8 @@ private:
 
 struct NoteCompare
 {
-    bool operator()(const Note* lh, const Note* rh)
+    //bool operator()(const Note* lh, const Note* rh)
+    bool operator()(const unique_ptr<Note> & lh, const unique_ptr<Note> & rh)
     {
         return lh->getPlacement() < rh->getPlacement();
     }
