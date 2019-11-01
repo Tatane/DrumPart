@@ -23,13 +23,15 @@ private:
 class SoundMixer
 {
 public:
-    SoundMixer();
+    static SoundMixer * getInstance();
     ~SoundMixer();
 
     int loadWav(const char* fileFullPathName);
     void play(int index);
 
 private:
+    SoundMixer();
+    static SoundMixer * instance;
     std::vector<std::unique_ptr<Sound>> sounds;
 };
 

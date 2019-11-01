@@ -2,6 +2,8 @@
 
 using namespace std;
 
+SoundMixer* SoundMixer::instance = nullptr;
+
 SoundMixer::SoundMixer()
 {
     if (SDL_Init( SDL_INIT_AUDIO) < 0)
@@ -13,6 +15,16 @@ SoundMixer::SoundMixer()
     {
         cout<<"Error SDL open audio"<<endl;
     }
+}
+
+SoundMixer *SoundMixer::getInstance()
+{
+    if (instance == nullptr)
+    {
+        instance = new SoundMixer;
+    }
+
+    return instance;
 }
 
 SoundMixer::~SoundMixer()

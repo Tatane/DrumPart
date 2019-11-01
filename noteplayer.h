@@ -20,7 +20,7 @@ public:
     void play(DrumNotes drumNote);
 
 private:
-    SoundMixer soundMixer;
+    SoundMixer * soundMixer;
     map<DrumNotes, int> mapDrumNoteSoundIndex;
     void loadSoundFiles();
 };
