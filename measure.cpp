@@ -39,9 +39,9 @@ void Measure::play()
     cout<<"End Measure"<<endl;
 }
 
-void Measure::addNote(unique_ptr<Note> note)
+void Measure::addNote(const shared_ptr<Note> & note)
 {
-    notes.insert(std::move(note));
+    notes.insert(note);
 }
 
 

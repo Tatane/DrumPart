@@ -20,10 +20,10 @@ class Measure
 public:
     Measure(shared_ptr<Partition>);
     void play();
-    void addNote(unique_ptr<Note>);
+    void addNote(const shared_ptr<Note> &);
 
 private:
-    set<unique_ptr<Note>, NoteCompare> notes;
+    set<shared_ptr<Note>, NoteCompare> notes;
     TimeSignature timeSignature;
     shared_ptr<Partition> partition;
 };
