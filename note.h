@@ -9,22 +9,27 @@ public:
     Note();
     void play();
 
-    double      getStartTimeFromBeginningOfMeasure() const { return startTimeFromBeginningOfMeasure; }
-    void        setStartTimeFromBeginningOfMeasure(double d) { startTimeFromBeginningOfMeasure = d; }
     DrumNotes   getDrumNote() const { return drumNote; }
     void        setDrumNote(const DrumNotes &value) {drumNote = value; }
 
+    short   getPlacement() const {return placement;}
+    void    setPlacement(short value);
+
+    double convertPlacementToTime(double measureDuration);
+
 private:
+    const short NB_MAX_SUBDIVISION_PER_MEASURE = 16; // for now, 16th notes are the smallest possible.
     static NotePlayer notePlayer;
     DrumNotes drumNote = DrumNotes::Bass;
     double startTimeFromBeginningOfMeasure = 0;
+    short placement = 0;
 };
 
 struct NoteCompare
 {
     bool operator()(const Note* lh, const Note* rh)
     {
-        return lh->getStartTimeFromBeginningOfMeasure() < rh->getStartTimeFromBeginningOfMeasure();
+        return lh->getPlacement() < rh->getPlacement();
     }
 };
 

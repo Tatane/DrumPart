@@ -22,6 +22,11 @@ void NotePlayer::loadSoundFiles()
     {
         mapDrumNoteSoundIndex[DrumNotes::Snare] = index;
     }
+
+    if (int index = soundMixer->loadWav("/home/monom/Music/CYCdh_Crash-03.wav") >= 0)
+    {
+        mapDrumNoteSoundIndex[DrumNotes::Crash] = index;
+    }
 }
 
 void NotePlayer::play(DrumNotes drumNote)

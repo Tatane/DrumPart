@@ -10,7 +10,8 @@ using namespace std;
 enum class DrumNotes
 {
   Bass,
-  Snare
+  Snare,
+  Crash
 };
 
 class NotePlayer

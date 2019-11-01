@@ -5,23 +5,26 @@
 
 #include "note.h"
 
+class Partition;
+
 using namespace std;
 
-/*struct TimeSignature
+struct TimeSignature
 {
     int beatsPerMeasure = 4;
-    int noteValueEquivalentToABeat = 4;
-};*/
+    //int noteValueEquivalentToABeat = 4;
+};
 
 class Measure
 {
 public:
-    Measure();
+    Measure(shared_ptr<Partition>);
     void play();
 
 private:
     set<Note*, NoteCompare> notes;
-    //TimeSignature timeSignature;
+    TimeSignature timeSignature;
+    shared_ptr<Partition> partition;
 };
 
 #endif // MEASURE_H
