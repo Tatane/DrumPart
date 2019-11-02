@@ -6,7 +6,9 @@
 class Note
 {
 public:
-    Note();
+    Note(DrumNotes drumNote, short placement);
+    Note(const Note &) = default;
+
     void play();
 
     DrumNotes   getDrumNote() const { return drumNote; }
@@ -28,7 +30,7 @@ private:
 struct NoteCompare
 {
     //bool operator()(const Note* lh, const Note* rh)
-    bool operator()(const shared_ptr<Note> & lh, const shared_ptr<Note> & rh)
+    bool operator()(const unique_ptr<Note> & lh, const unique_ptr<Note> & rh)
     {
         return lh->getPlacement() < rh->getPlacement();
     }

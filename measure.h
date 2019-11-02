@@ -19,11 +19,15 @@ class Measure
 {
 public:
     Measure(shared_ptr<Partition>);
+    Measure(const Measure& o);
+    void operator=(const Measure & o);
+    Measure(Measure && o);
+
     void play();
-    void addNote(const shared_ptr<Note> &);
+    void addNote(unique_ptr<Note> &&);
 
 private:
-    set<shared_ptr<Note>, NoteCompare> notes;
+    set<unique_ptr<Note>, NoteCompare> notes;
     TimeSignature timeSignature;
     shared_ptr<Partition> partition;
 };

@@ -10,6 +10,33 @@ Measure::Measure(shared_ptr<Partition> part)
 {
 }
 
+Measure::Measure(const Measure &o)
+    : timeSignature(o.timeSignature)
+    , partition(o.partition)
+{
+    // Copy Notes
+    for(auto & pNote : o.notes)
+    {
+        notes.insert(make_unique<Note>(*pNote.get())); // Make a new unique_ptr Note from a copy of the raw Note stored in model unique_ptr
+    }
+}
+
+void Measure::operator=(const Measure &o)
+{
+    // Copy Notes
+    for(auto & pNote : o.notes)
+    {
+        notes.insert(make_unique<Note>(*pNote.get())); // Make a new unique_ptr Note from a copy of the raw Note stored in model unique_ptr
+    }
+}
+
+Measure::Measure(Measure &&o)
+    : timeSignature(std::move(o.timeSignature))
+    , partition(std::move(o.partition))
+    , notes(std::move(o.notes))
+{
+}
+
 
 void Measure::play()
 {
@@ -39,9 +66,7 @@ void Measure::play()
     cout<<"End Measure"<<endl;
 }
 
-void Measure::addNote(const shared_ptr<Note> & note)
+void Measure::addNote(unique_ptr<Note> && note)
 {
-    notes.insert(note);
+    notes.insert(std::move(note));
 }
-
-

@@ -4,8 +4,11 @@
 
 NotePlayer Note::notePlayer;
 
-Note::Note()
+Note::Note(DrumNotes drumNote, short placement)
+    : drumNote(drumNote)
+    , placement(placement)
 {
+
 }
 
 void Note::play()
