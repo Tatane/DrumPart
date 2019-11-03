@@ -31,9 +31,9 @@ void Measure::operator=(const Measure &o)
 }
 
 Measure::Measure(Measure &&o)
-    : timeSignature(std::move(o.timeSignature))
+    : notes(std::move(o.notes))
+    , timeSignature(std::move(o.timeSignature))
     , partition(std::move(o.partition))
-    , notes(std::move(o.notes))
 {
 }
 
