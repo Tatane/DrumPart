@@ -23,7 +23,7 @@ public:
 
     // insertMeasure() accepts only a rvalue reference of a Measure, so that the caller can't keep the ownership.
 
-    unique_ptr<Measure> & insertMeasure(int position, unique_ptr<Measure> measure = nullptr);
+    Measure & insertMeasure(int position, unique_ptr<Measure> measure = nullptr);
 
 
 private:

@@ -26,6 +26,8 @@ public:
     void play();
     void addNote(unique_ptr<Note>);
 
+
+
 private:
     set<unique_ptr<Note>, NoteCompare> notes; // Using a 'set' container, we can't have 2 identical notes (same attributs : same placement, same drumnote). Is it what we want ? We could use a 'multiset' instead.
     TimeSignature timeSignature;
