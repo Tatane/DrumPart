@@ -18,7 +18,7 @@ void Partition::play()
     }
 }
 
-unique_ptr<Measure> & Partition::insertMeasure(int position, unique_ptr<Measure> && measure /* = nullptr */)
+unique_ptr<Measure> & Partition::insertMeasure(int position, unique_ptr<Measure> measure /* = nullptr */)
 {
     MeasuresContainer::const_iterator it = measures.cbegin();
     if (position >= static_cast<int>(measures.size()))
@@ -35,7 +35,7 @@ unique_ptr<Measure> & Partition::insertMeasure(int position, unique_ptr<Measure>
 
     if ( ! measure )
     {
-        measure = std::make_unique<Measure>(std::shared_ptr<Partition>(this));
+        measure = std::make_unique<Measure>(*this);
     }
 
     MeasuresContainer::iterator newIt = measures.insert(it, std::move(measure));

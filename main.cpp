@@ -10,7 +10,7 @@ using namespace std;
 
 int main()
 {
-    shared_ptr<Partition> partition = make_shared<Partition>();
+    Partition partition;
 
     /*
     unique_ptr<Measure> measure1 = make_unique<Measure>(partition);
@@ -37,21 +37,30 @@ int main()
     //unique_ptr<Measure> meas1 = make_unique<Measure>(partition);
     //partition->insertMeasure(0, std::move(meas1));
 
-    unique_ptr<Measure> & newMeas1 = partition->insertMeasure(0);
-    unique_ptr<Measure> & newMeas2 = partition->insertMeasure(1);
-    unique_ptr<Measure> & newMeas3 = partition->insertMeasure(2);
-    unique_ptr<Measure> & newMeas4 = partition->insertMeasure(3);
+    make_unique<Measure>(partition);
 
-    unique_ptr<Note> note1 = make_unique<Note>(DrumNotes::Bass, 0);
+    unique_ptr<Measure> & newMeas1 = partition.insertMeasure(0);
+    //unique_ptr<Measure> & newMeas2 = partition.insertMeasure(1);
+    //unique_ptr<Measure> & newMeas3 = partition.insertMeasure(2);
+    //unique_ptr<Measure> & newMeas4 = partition.insertMeasure(3);
 
-    newMeas1->addNote(std::move(note1));
-    newMeas2->addNote(make_unique<Note>(DrumNotes::Bass, 0));
-    newMeas3->addNote(make_unique<Note>(DrumNotes::Bass, 1));
-    newMeas4->addNote(make_unique<Note>(DrumNotes::Bass, 0));
+    newMeas1->addNote(make_unique<Note>(DrumNotes::Bass, 0));
+    newMeas1->addNote(make_unique<Note>(DrumNotes::Snare, 4));
+    newMeas1->addNote(make_unique<Note>(DrumNotes::Bass, 8));
+    newMeas1->addNote(make_unique<Note>(DrumNotes::Snare, 12));
+
+    unique_ptr<Measure> meas2(new Measure(*newMeas1));
+    partition.insertMeasure(1, std::move(meas2));
+
+    partition.insertMeasure(2, unique_ptr<Measure>(new Measure(*newMeas1)));
+
+    //newMeas2->addNote(make_unique<Note>(DrumNotes::Bass, 0));
+    //newMeas3->addNote(make_unique<Note>(DrumNotes::Bass, 0));
+    //newMeas4->addNote(make_unique<Note>(DrumNotes::Bass, 0));
 
     //partition->addMeasure(&measure2);
     //partition->addMeasure(&measure3);
-    partition->play();
+    partition.play();
 
 
     /*

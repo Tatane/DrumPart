@@ -18,18 +18,18 @@ struct TimeSignature
 class Measure
 {
 public:
-    Measure(shared_ptr<Partition>);
+    Measure(const Partition &);
     Measure(const Measure& o);
     void operator=(const Measure & o);
     Measure(Measure && o);
 
     void play();
-    void addNote(unique_ptr<Note> &&);
+    void addNote(unique_ptr<Note>);
 
 private:
     set<unique_ptr<Note>, NoteCompare> notes; // Using a 'set' container, we can't have 2 identical notes (same attributs : same placement, same drumnote). Is it what we want ? We could use a 'multiset' instead.
     TimeSignature timeSignature;
-    shared_ptr<Partition> partition;
+    const Partition & partition;
 };
 
 #endif // MEASURE_H

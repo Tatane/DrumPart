@@ -5,7 +5,7 @@
 
 #include <partition.h>
 
-Measure::Measure(shared_ptr<Partition> part)
+Measure::Measure(const Partition & part)
     : partition(part)
 {
 }
@@ -33,7 +33,7 @@ void Measure::operator=(const Measure &o)
 Measure::Measure(Measure &&o)
     : notes(std::move(o.notes))
     , timeSignature(std::move(o.timeSignature))
-    , partition(std::move(o.partition))
+    , partition(o.partition)
 {
 }
 
@@ -44,7 +44,7 @@ void Measure::play()
     auto start = chrono::system_clock::now();
     chrono::duration<double> elapsed = chrono::system_clock::now() - start;
 
-    double measureDuration = static_cast<double>(timeSignature.beatsPerMeasure) / partition->getTempo() * 60;
+    double measureDuration = static_cast<double>(timeSignature.beatsPerMeasure) / partition.getTempo() * 60;
 
     auto it = notes.begin();
 
@@ -66,7 +66,7 @@ void Measure::play()
     cout<<"End Measure"<<endl;
 }
 
-void Measure::addNote(unique_ptr<Note> && note)
+void Measure::addNote(unique_ptr<Note> note)
 {
     notes.insert(std::move(note));
 }
