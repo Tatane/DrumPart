@@ -8,17 +8,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
 
-
-class Sound
-{
-public:
-    Sound(Mix_Chunk *c);
-    ~Sound();
-    void play();
-
-private:
-    std::unique_ptr<Mix_Chunk> chunk;
-};
+class Sound;
 
 class SoundMixer
 {
@@ -33,6 +23,17 @@ private:
     SoundMixer();
     static SoundMixer * instance;
     std::vector<std::unique_ptr<Sound>> sounds;
+};
+
+class Sound
+{
+public:
+    Sound(Mix_Chunk *c);
+    ~Sound();
+    void play();
+
+private:
+    std::unique_ptr<Mix_Chunk> chunk;
 };
 
 #endif // SOUNDMIXER_H

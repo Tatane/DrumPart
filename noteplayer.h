@@ -10,19 +10,15 @@ using namespace std;
 class NotePlayer
 {
 public:
-    //static NotePlayer * getInstance();
     void play(short pitch);
 
 protected:
     NotePlayer();
-
-
     SoundMixer * soundMixer;
-    map<short, int> mapDrumNoteSoundIndex; // map Pitch to sound sample index.
-    virtual void loadSoundFiles() = 0;
+    map<short, int> mapNotePitchToSoundSampleIndex; // map Pitch to sound sample index.
 
 private:
-
+    virtual void loadSoundFiles() = 0;
 };
 
 #endif // NOTEPLAYER_H

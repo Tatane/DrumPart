@@ -1,14 +1,11 @@
 #include <iostream>
 
-#include "soundmixer.h"
 #include "measure.h"
-#include "partition.h"
-
-#include "noteplayer.h"
-
 #include "notedrum.h"
-
 #include "notepiano.h"
+#include "noteplayer.h"
+#include "partition.h"
+#include "soundmixer.h"
 
 using namespace std;
 
@@ -16,7 +13,7 @@ int main()
 {
     Partition partition;
 
-    // Partition::insertMeasure returns a ref to a new created Measure if the caller didn't pass an existing Measure.
+    // Partition::insertMeasure returns a ref to a new created Measure, or to the existing Measure the caller passed as second argument.
     Measure & newMeas1 = partition.insertMeasure(0);
 
     // REMARK :
@@ -25,7 +22,7 @@ int main()
     // unique_ptr<Note> note1 = make_unique<Note>(DrumNotes::Bass, 0);
     // measure.addNote(std::move(note1));
     newMeas1.addNote(make_unique<NotePiano>(0, 0));
-    //newMeas1.addNote(make_unique<NoteDrum>(-3, 0));
+    newMeas1.addNote(make_unique<NoteDrum>(-3, 0));
     newMeas1.addNote(make_unique<NoteDrum>(1, 4));
     newMeas1.addNote(make_unique<NoteDrum>(-3, 8));
     newMeas1.addNote(make_unique<NoteDrum>(1, 12));
@@ -37,11 +34,9 @@ int main()
     partition.insertMeasure(1, std::move(meas2));
     //partition.insertMeasure(2, unique_ptr<Measure>(new Measure(newMeas1)));
 
-
     partition.play();
 
-
-    /*  TODO :
+/*  TODO :
 
 Ajouter une note a une mesure deja existante.
 Modifier le Type d'une note existante.
@@ -55,7 +50,7 @@ Dupliquer une mesure
 Deplacer une mesure dans la partition.
 Repeter une mesure n fois.
 
-      */
+*/
 
     cout << "TERMINATED" << endl;
     //char c; cin >> c;

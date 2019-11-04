@@ -22,6 +22,6 @@ void NotePlayerPiano::loadSoundFiles()
     int index = -1;
     if ((index = soundMixer->loadWav("/home/monom/Music/piano2.wav")) >= 0)
     {
-        mapDrumNoteSoundIndex[0] = index;
+        mapNotePitchToSoundSampleIndex[0] = index;
     }
 }

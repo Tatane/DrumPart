@@ -2,24 +2,17 @@
 
 #include "noteplayerpiano.h"
 
-//NotePlayer* Note::notePlayer = NotePlayerPiano::getInstance();
-
-NotePiano::NotePiano(int, int)
+NotePiano::NotePiano(short pitch, short placement)
+    : Note(pitch, placement)
 {
-
 }
 
-void NotePiano::initNotePlayer()
-{
-
-}
-
-unique_ptr<Note> NotePiano::createUnique() const
+unique_ptr<Note> NotePiano::copyToUniquePtr() const
 {
     return unique_ptr<NotePiano>(new NotePiano(*this));
 }
 
-NotePlayer *NotePiano::getNotePlayer()
+NotePlayer *NotePiano::getNotePlayer() const
 {
     return NotePlayerPiano::getInstance();
 }

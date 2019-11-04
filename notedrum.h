@@ -6,25 +6,12 @@
 class NoteDrum : public Note
 {
 public:
-    NoteDrum(int pitch, short placement);
+    NoteDrum(short pitch, short placement);
 
-    NoteDrum(const Note & o)
-        : Note(o)
-    {
-        // TODO Add drum specifics to the new created Note instance.
-        o.getPitch();
-    }
+    unique_ptr<Note> copyToUniquePtr() const override;
 
-public:
-    void initNotePlayer();
-
-    // Note interface
-public:
-    unique_ptr<Note> createUnique() const;
-
-    // Note interface
-protected:
-    NotePlayer *getNotePlayer();
+private:
+    NotePlayer *getNotePlayer() const override;
 };
 
 #endif // NOTEDRUM_H

@@ -6,16 +6,11 @@
 class NotePiano : public Note
 {
 public:
-    NotePiano(int, int);
+    NotePiano(short pitch, short placement);
+    unique_ptr<Note> copyToUniquePtr() const override;
 
-    // Note interface
-public:
-    void initNotePlayer();
-    unique_ptr<Note> createUnique() const;
-
-    // Note interface
-protected:
-    NotePlayer *getNotePlayer();
+private:
+    NotePlayer *getNotePlayer() const;
 };
 
 #endif // NOTEPIANO_H

@@ -2,24 +2,14 @@
 
 #include <algorithm>
 
-//unique_ptr<NotePlayer> Note::notePlayer = nullptr;
-//NotePlayer * Note::notePlayer = nullptr;
-
-Note::Note()
-{
-
-}
-
 Note::~Note()
 {
-
 }
 
 Note::Note(short pitch, short placement)
     : pitch(pitch)
     , placement(placement)
 {
-
 }
 
 void Note::play()
