@@ -8,7 +8,11 @@ SOURCES += main.cpp \
     note.cpp \
     measure.cpp \
     partition.cpp \
-    noteplayer.cpp
+    noteplayer.cpp \
+    noteplayerdrum.cpp \
+    notedrum.cpp \
+    notepiano.cpp \
+    noteplayerpiano.cpp
 
 LIBS += -lSDL2 -lSDL2_mixer
 
@@ -17,7 +21,11 @@ HEADERS += \
     note.h \
     measure.h \
     partition.h \
-    noteplayer.h
+    noteplayer.h \
+    noteplayerdrum.h \
+    notedrum.h \
+    notepiano.h \
+    noteplayerpiano.h
 
 
 CONFIG += c++14

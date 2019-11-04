@@ -2,37 +2,40 @@
 
 #include "soundmixer.h"
 
+
+
 NotePlayer::NotePlayer()
     : soundMixer(SoundMixer::getInstance())
 {
-    loadSoundFiles();
-}
 
-void NotePlayer::loadSoundFiles()
+}
+/*
+void NotePlayer::loadSoundFiles(Instrument instru)
 {
-    //int index = soundMixer->loadWav("/home/monom/Music/piano2.wav");
-    int index = soundMixer->loadWav("/home/monom/Music/CYCdh_ElecK01-Kick02.wav");
-
-    if (index >= 0)
+    if (instru == Instrument::Drum)
     {
-        mapDrumNoteSoundIndex[DrumNotes::Bass] = index;
-    }
+        if (int index = soundMixer->loadWav("/home/monom/Music/CYCdh_ElecK01-Kick02.wav") >= 0)
+        {
+            mapDrumNoteSoundIndex[-3] = index;
+        }
 
-    if (int index = soundMixer->loadWav("/home/monom/Music/CYCdh_K4-Snr05.wav") >= 0)
-    {
-        mapDrumNoteSoundIndex[DrumNotes::Snare] = index;
-    }
+        if (int index = soundMixer->loadWav("/home/monom/Music/CYCdh_K4-Snr05.wav") >= 0)
+        {
+            mapDrumNoteSoundIndex[1] = index;
+        }
 
-    if (int index = soundMixer->loadWav("/home/monom/Music/CYCdh_Crash-03.wav") >= 0)
-    {
-        mapDrumNoteSoundIndex[DrumNotes::Crash] = index;
+        if (int index = soundMixer->loadWav("/home/monom/Music/CYCdh_Crash-03.wav") >= 0)
+        {
+            mapDrumNoteSoundIndex[6] = index;
+        }
     }
 }
-
-void NotePlayer::play(DrumNotes drumNote)
+*/
+void NotePlayer::play(short pitch)
 {
-    if (mapDrumNoteSoundIndex.count(drumNote))
+    if (mapDrumNoteSoundIndex.count(pitch))
     {
-        soundMixer->play(mapDrumNoteSoundIndex.at(drumNote));
+        soundMixer->play(mapDrumNoteSoundIndex.at(pitch));
     }
 }
+

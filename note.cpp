@@ -2,10 +2,21 @@
 
 #include <algorithm>
 
-NotePlayer Note::notePlayer;
+//unique_ptr<NotePlayer> Note::notePlayer = nullptr;
+//NotePlayer * Note::notePlayer = nullptr;
 
-Note::Note(DrumNotes drumNote, short placement)
-    : drumNote(drumNote)
+Note::Note()
+{
+
+}
+
+Note::~Note()
+{
+
+}
+
+Note::Note(short pitch, short placement)
+    : pitch(pitch)
     , placement(placement)
 {
 
@@ -13,7 +24,7 @@ Note::Note(DrumNotes drumNote, short placement)
 
 void Note::play()
 {
-    notePlayer.play(drumNote);
+    getNotePlayer()->play(pitch);
 }
 
 void Note::setPlacement(short value)
@@ -25,3 +36,7 @@ double Note::convertPlacementToTime(double measureDuration) const
 {
     return measureDuration * placement / NB_MAX_SUBDIVISION_PER_MEASURE;
 }
+
+
+
+

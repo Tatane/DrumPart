@@ -2,8 +2,9 @@
 #define PARTITION_H
 
 #include <list>
-#include <measure.h>
 #include <memory>
+
+#include "measure.h"
 
 using namespace std;
 
@@ -24,6 +25,8 @@ public:
     // insertMeasure() accepts only a rvalue reference of a Measure, so that the caller can't keep the ownership.
 
     Measure & insertMeasure(int position, unique_ptr<Measure> measure = nullptr);
+
+    Note & getNote(const Measure &, int place) const;
 
 
 private:

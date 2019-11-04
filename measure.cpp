@@ -3,7 +3,7 @@
 #include <chrono>
 #include <iostream>
 
-#include <partition.h>
+#include "partition.h"
 
 Measure::Measure(const Partition & part)
     : partition(part)
@@ -17,7 +17,7 @@ Measure::Measure(const Measure &o)
     // Copy Notes
     for(auto & pNote : o.notes)
     {
-        notes.insert(make_unique<Note>(*pNote.get())); // Make a new unique_ptr Note from a copy of the raw Note stored in model unique_ptr
+        notes.insert(pNote->createUnique()); // Make a new unique_ptr Note from a copy of the raw Note stored in model unique_ptr
     }
 }
 
@@ -26,7 +26,7 @@ void Measure::operator=(const Measure &o)
     // Copy Notes
     for(auto & pNote : o.notes)
     {
-        notes.insert(make_unique<Note>(*pNote.get())); // Make a new unique_ptr Note from a copy of the raw Note stored in model unique_ptr
+        notes.insert(pNote->createUnique()); // Make a new unique_ptr Note from a copy of the raw Note stored in model unique_ptr
     }
 }
 

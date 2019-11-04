@@ -7,23 +7,22 @@
 
 using namespace std;
 
-enum class DrumNotes
-{
-  Bass,
-  Snare,
-  Crash
-};
-
 class NotePlayer
 {
 public:
+    //static NotePlayer * getInstance();
+    void play(short pitch);
+
+protected:
     NotePlayer();
-    void play(DrumNotes drumNote);
+
+
+    SoundMixer * soundMixer;
+    map<short, int> mapDrumNoteSoundIndex; // map Pitch to sound sample index.
+    virtual void loadSoundFiles() = 0;
 
 private:
-    SoundMixer * soundMixer;
-    map<DrumNotes, int> mapDrumNoteSoundIndex;
-    void loadSoundFiles();
+
 };
 
 #endif // NOTEPLAYER_H
