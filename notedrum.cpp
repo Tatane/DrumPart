@@ -7,6 +7,11 @@ NoteDrum::NoteDrum(short pitch, short placement)
 {
 }
 
+NoteDrum::~NoteDrum()
+{
+
+}
+
 unique_ptr<Note> NoteDrum::copyToUniquePtr() const
 {
     return unique_ptr<NoteDrum>(new NoteDrum(*this));

@@ -36,9 +36,9 @@ Measure & Partition::insertMeasure(int position, unique_ptr<Measure> measure /* 
 
     return *(newIt->get());
 }
-/*
-Note & Partition::getNote(const Measure & measure, int place) const
+
+const Partition::MeasuresContainer &Partition::getMeasures() const
 {
-    // TODO
+    return measures;
 }
-*/
+

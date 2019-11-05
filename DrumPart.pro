@@ -12,7 +12,8 @@ SOURCES += main.cpp \
     noteplayerdrum.cpp \
     notedrum.cpp \
     notepiano.cpp \
-    noteplayerpiano.cpp
+    noteplayerpiano.cpp \
+    consoledisplay.cpp
 
 LIBS += -lSDL2 -lSDL2_mixer
 
@@ -25,7 +26,8 @@ HEADERS += \
     noteplayerdrum.h \
     notedrum.h \
     notepiano.h \
-    noteplayerpiano.h
+    noteplayerpiano.h \
+    consoledisplay.h
 
 
 CONFIG += c++14

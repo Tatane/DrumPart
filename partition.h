@@ -8,19 +8,21 @@
 
 using namespace std;
 
+
 class Partition
 {
 public:
+    using MeasuresContainer = list<unique_ptr<Measure>>;
+
     Partition();
 
     void play();
     int getTempo() const {return tempo; }
 
     Measure & insertMeasure(int position, unique_ptr<Measure> measure = nullptr);
-    Note & getNote(const Measure &, int place) const;
+    const MeasuresContainer & getMeasures() const;
 
 private:
-    using MeasuresContainer = list<unique_ptr<Measure>>;
     MeasuresContainer measures;
 
     int tempo = 100;

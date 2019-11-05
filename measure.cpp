@@ -60,3 +60,28 @@ void Measure::addNote(unique_ptr<Note> note)
 {
     notes.insert(std::move(note));
 }
+
+Note * Measure::getNote(short pitch, int place) const
+{
+    Note * ret = nullptr;
+    for(auto & note : notes)
+    {
+        if (note->getPitch() == pitch && note->getPlacement() == place)
+        {
+            ret = note.get();
+        }
+    }
+
+    return ret;
+}
+
+vector<const Note *> Measure::getNotes() const
+{
+    vector<const Note *> ret;
+    for(const unique_ptr<Note> & note : notes)
+    {
+        ret.push_back(note.get());
+    }
+
+    return ret;
+}

@@ -24,6 +24,8 @@ public:
 
     void play();
     void addNote(unique_ptr<Note>);
+    Note *getNote(short pitch, int place) const;
+    vector<const Note *> getNotes()const;
 
 private:
     set<unique_ptr<Note>, NoteCompare> notes; // Using a 'set' container, we can't have 2 identical notes (same attributs : same placement, same drumnote). Is it what we want ? We could use a 'multiset' instead.

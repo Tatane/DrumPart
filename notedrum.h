@@ -7,6 +7,7 @@ class NoteDrum : public Note
 {
 public:
     NoteDrum(short pitch, short placement);
+    ~NoteDrum();
 
     unique_ptr<Note> copyToUniquePtr() const override;
 
